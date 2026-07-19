@@ -3,7 +3,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import json
 import os
-from model import get_resnet18
+from src.model import get_resnet18
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(BASE_DIR, "..", "class_names.json"), "r") as f:
