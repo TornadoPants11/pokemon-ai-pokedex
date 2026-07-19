@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex Results</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static',filename='style.css')}}"
+        >
+    </head>
+    <body>
+    <div class="container">
+        <h1>{{ pokemon }}</h1>
+        <img src="{{ image_path }}" class="result-image">
+        <p class="confidence">
+            Confidence: {{ confidence }}%
+        </p>
+        <div class="predictions">
+            <h3>Top Predictions</h3>
+            {% for prediction in top5 %}
+                <p>
+                    {{ prediction.name }} - {{ prediction.confidence}}%
+                </p>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="back-button">
+            <button>Back</button>
+        </a>
+    </div>
+    </body>
+</html>
