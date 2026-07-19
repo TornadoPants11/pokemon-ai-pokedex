@@ -1,5 +1,5 @@
 from flask import (Flask, render_template, send_from_directory, request)
-from poke_predict import predict_pokemon
+from src.poke_predict import predict_pokemon
 import os
 
 app = Flask(__name__)
