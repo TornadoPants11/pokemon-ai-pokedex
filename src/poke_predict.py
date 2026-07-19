@@ -31,17 +31,18 @@ def predict_pokemon(image_path):
 
     confidence, predicted = torch.max(probabilities, 1)
 
-    top5_probs, top5_indices = torch.topk(probabilities, 5)
+    top5_probs, top5_indices = torch.topk(probabilities, 3)
     top5 = []
-    for i in range(5):
+    for i in range(3):
         idx = top5_indices[0][i].item()
         prob = top5_probs[0][i].item()
         top5.append({"name": class_names[idx], "confidence": round(prob*100, 2)})
-
+    
+    del image
+    del outputs
     return(
         class_names[predicted.item()],
         round(confidence.item()*100, 2),
         top5
     )
-    print(top5)
-    print(type(top5[0]["confidence"]))
+    
